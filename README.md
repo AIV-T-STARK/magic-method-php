@@ -1,5 +1,5 @@
 # Magic method
-
+---
 ## __contruct()
 - Hàm này được gọi khi khởi tạo đối tượng
 
@@ -97,9 +97,26 @@ $var();
 
 ## __sleep() và __wakeup()
 - __sleep() được gọi khi ta sử dụng serialize()
+```
+class ConNguoi
+{
+    private $name = 'Nguyen Gia Hao';
+    private $age = 20;
 
+    public function __sleep()
+    {
+        
+        return array('name');
+    }
+}
+
+echo serialize(new ConNguoi());
+//O:8:"ConNguoi":1:{s:14:"ConNguoiname";s:14:"Nguyen Gia Hao";}
+```
 - __wakeup() được gọi khi ta sử dụng deserialization()
+```
 
+```
 ## __clone()
 - Được gọi khi chúng ta clone(sao chép) một object
 
