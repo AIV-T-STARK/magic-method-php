@@ -127,3 +127,27 @@ echo serialize(new ConNguoi());
 ## __autoload($calssName)
 - Attempt to load undefined class
 - Hiện tại được khuyến cáo không nên sử dụng, thay vào đó sử dụng spl_autoload_register()
+
+```
+<?php
+include __DIR__ . '/classes/MyClass.php';
+include __DIR__ . '/classes/Foo.php';
+include __DIR__ . '/classes/Bar.php';
+
+
+$obj = new MyClass;
+$foo = new Foo;
+$bar = new Bar;
+```
+
+- Thay vì viết như thế kia thì ta có thể sử dụng spl_autoload_register()
+```
+<?php
+spl_autoload_register(function ($classname) {
+    include __DIR__ . '/classes/' . $classname . '.php';
+});
+
+$myClass = new MyClass;
+$foo = new Foo;
+$bar = new Bar;
+```
