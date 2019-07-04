@@ -66,6 +66,22 @@ echo $me->age; //21
 ## __call($method, $params) 
 - Hàm được gọi khi ta gọi đến một phương thức không tồn tại hoặc không public
 
+```
+class VNPer
+{
+    public function __call($method, $params)
+    {
+        var_dump($method);
+	var_dump($params);
+    }
+}
+
+$me = new VNPer();
+$me->callMethod('hihi');
+// string(10) "callMethod"
+// array(1) { [0]=> string(4) "hihi" }
+
+```
 ## __callSatic($method, $params)
 - Tương tự thằng __call() nhưng dùng cho phương thức tĩnh
 
