@@ -130,9 +130,9 @@ echo serialize(new ConNguoi());
 
 ```
 <?php
-include __DIR__ . '/classes/MyClass.php';
-include __DIR__ . '/classes/Foo.php';
-include __DIR__ . '/classes/Bar.php';
+include './classes/MyClass.php';
+include './classes/Foo.php';
+include './classes/Bar.php';
 
 
 $obj = new MyClass;
@@ -144,7 +144,10 @@ $bar = new Bar;
 ```
 <?php
 spl_autoload_register(function ($classname) {
-    include __DIR__ . '/classes/' . $classname . '.php';
+    $path = './classes/' . $classname . '.php';
+    if(file_exists($path)) {
+	include $path;
+    }
 });
 
 $myClass = new MyClass;
